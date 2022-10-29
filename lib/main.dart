@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho/views/home/home.dart';
 import 'package:trabalho/views/login/login.dart';
 import 'package:trabalho/views/register/register.dart';
 import 'package:trabalho/views/splash/splash.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
+        '/home': (context) => const HomeScreen()
       },
     );
   }

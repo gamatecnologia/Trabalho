@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho/shared/provider_messager/provider_messages.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,7 +12,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
-  bool showPassword = false;
+  bool showPassword = true;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -36,6 +37,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (text!.isEmpty) {
                       return 'E-mail obrigatória';
                     } else {
+                      if (!text.contains('.') ||
+                          !text.contains('@') ||
+                          text.contains(' ')) {
+                        return 'E-mail inválido';
+                      }
                       return null;
                     }
                   },
@@ -73,7 +79,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (_key.currentState!.validate()) {
-                      print('certo');
+                      ProviderMessager()
+                          .showMessage('Seja bem vindo!', context);
+                      Navigator.pushNamed(context, '/home');
                     }
                   },
                   child: const Text('Acessar'),

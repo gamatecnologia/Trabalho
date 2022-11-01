@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: size.height * 0.05,
                   ),
                   SizedBox(
-                    height: size.height * .75,
+                    height: size.height * .7,
                     child: ListView.builder(
                         itemCount: 50,
                         itemBuilder: (context, index) {

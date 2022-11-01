@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:trabalho/views/chat/chat_provider.dart';
+import 'package:trabalho/views/chat/chat_screens.dart';
 import 'package:trabalho/views/home/home.dart';
 import 'package:trabalho/views/home/home_provider.dart';
 import 'package:trabalho/views/login/login.dart';
@@ -18,7 +20,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => HomeProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => HomeProvider()),
+        ChangeNotifierProvider(create: (_) => ChatProvider())
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
@@ -41,6 +46,7 @@ class MyApp extends StatelessWidget {
           '/register': (context) => const RegisterScreen(),
           '/home': (context) => const HomeScreen(),
           '/perfil': (context) => const ProfileScreen(),
+          '/chat': (context) => const ChatScreen()
         },
       ),
     );

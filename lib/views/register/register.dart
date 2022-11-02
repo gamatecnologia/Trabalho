@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trabalho/views/register/register_provider.dart';
 
 import '../../shared/provider_messager/provider_messages.dart';
 
@@ -19,6 +20,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool showPassword2 = true;
   @override
   Widget build(BuildContext context) {
+    final RegisterProvider provider = RegisterProvider();
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -36,6 +38,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextFormField(
                 controller: _name,
+                onChanged: (value) {
+                  provider.userModel.name = value;
+                },
                 validator: (text) {
                   if (text!.isEmpty) {
                     return 'Nome é obrigatória';
@@ -50,6 +55,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextFormField(
                 controller: _email,
+                onChanged: (value) {
+                  provider.userModel.email = value;
+                },
                 validator: (text) {
                   if (text!.isEmpty) {
                     return 'E-mail obrigatória';
@@ -70,6 +78,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextFormField(
                 controller: _password,
+                onChanged: (value) {
+                  provider.userModel.password = value;
+                },
                 validator: (text) {
                   if (text!.isEmpty) {
                     return 'Senha obrigatória';
@@ -94,6 +105,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextFormField(
                 controller: _confirmPassword,
+                onChanged: (value) {
+                  provider.userModel.confirmedPassword = value;
+                },
                 validator: (text) {
                   if (text!.isEmpty) {
                     return 'Campo obrigatório';
@@ -120,10 +134,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: size.height * 0.1,
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_key.currentState!.validate()) {
-                    ProviderMessager().showMessage('Cadastrado!', context);
-                    Navigator.pushNamed(context, '/login');
+                    await provider.validDataAndRegister(context);
                   }
                 },
                 child: const Text('Cadastrar'),

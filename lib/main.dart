@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:trabalho/views/chat/chat_provider.dart';
 import 'package:trabalho/views/chat/chat_screens.dart';
@@ -7,10 +9,26 @@ import 'package:trabalho/views/home/home_provider.dart';
 import 'package:trabalho/views/login/login.dart';
 import 'package:trabalho/views/profile/profile.dart';
 import 'package:trabalho/views/register/register.dart';
+import 'package:trabalho/views/register/register_provider.dart';
 import 'package:trabalho/views/splash/splash.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+          [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
+      .then((_) async {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: "AIzaSyBcCgU-BzDy6IXK61VfpDCB5Z4Kwz5PLnY",
+          appId: "1:72555826597:web:2f657dc053c2b55c456c4c",
+          messagingSenderId: "72555826597",
+          projectId: "ensinamentos-6282f",
+          databaseURL:
+              "https://ensinamentos-6282f-default-rtdb.firebaseio.com/",
+        ),
+        name: "ensinamentos-dom-helder");
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +40,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => HomeProvider()),
-        ChangeNotifierProvider(create: (_) => ChatProvider())
+        ChangeNotifierProvider(create: (_) => ChatProvider()),
+        ChangeNotifierProvider(create: (_) => RegisterProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

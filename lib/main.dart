@@ -17,16 +17,7 @@ void main() {
   SystemChrome.setPreferredOrientations(
           [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
       .then((_) async {
-    await Firebase.initializeApp(
-        options: const FirebaseOptions(
-          apiKey: "AIzaSyBcCgU-BzDy6IXK61VfpDCB5Z4Kwz5PLnY",
-          appId: "1:72555826597:web:2f657dc053c2b55c456c4c",
-          messagingSenderId: "72555826597",
-          projectId: "ensinamentos-6282f",
-          databaseURL:
-              "https://ensinamentos-6282f-default-rtdb.firebaseio.com/",
-        ),
-        name: "ensinamentos-dom-helder");
+    await Firebase.initializeApp();
     runApp(const MyApp());
   });
 }

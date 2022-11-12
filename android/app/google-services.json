@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "72555826597",
+    "firebase_url": "https://ensinamentos-6282f-default-rtdb.firebaseio.com",
+    "project_id": "ensinamentos-6282f",
+    "storage_bucket": "ensinamentos-6282f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72555826597:android:3daac3d90b5a365e456c4c",
+        "android_client_info": {
+          "package_name": "com.trabalho.mobile.marcela"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72555826597-skc9srk20t0o3t2fcdkfuodcjnfanjs0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8CJB4-SUmIj1zClahLMGz-6tlmJOzMz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72555826597-skc9srk20t0o3t2fcdkfuodcjnfanjs0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

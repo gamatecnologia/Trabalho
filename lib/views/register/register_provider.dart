@@ -8,10 +8,13 @@ class RegisterProvider with ChangeNotifier {
   RegisterUserModel userModel = RegisterUserModel();
   final IRegisterRepository _registerRepository = RegisterRepository();
   final ProviderMessager _messageModel = ProviderMessager();
+  bool getting = false;
 
   validDataAndRegister(BuildContext context) async {
     var valid = userModel.validData(userModel);
     if (valid == '') {
+      doRequesting;
+      notifyListeners();
       await _registerRepository.registerUser(userModel).then((value) {
         if (value) {
           _messageModel.showMessage('Usuário cadastrado com sucesso!', context);
@@ -21,8 +24,13 @@ class RegisterProvider with ChangeNotifier {
       }).catchError((e) {
         _messageModel.showMessage('Erro ao cadastrar usuário!', context);
       });
+      doneRequest;
+      notifyListeners();
     } else {
       _messageModel.showMessage(valid, context);
     }
   }
+
+  void get doRequesting => getting = true;
+  void get doneRequest => getting = false;
 }

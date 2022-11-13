@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+import 'package:trabalho/views/login/login_provider.dart';
 
 class DrawerNavigator extends StatelessWidget {
   const DrawerNavigator({super.key});
@@ -10,13 +12,14 @@ class DrawerNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final _action = context.watch<LoginProvider>();
     return ListView(
       padding: EdgeInsets.zero,
       children: [
-        const DrawerHeader(
+        DrawerHeader(
           child: Text(
-            'Olá Matheus',
-            style: TextStyle(color: Colors.white),
+            'Olá ' + _action.myProfile.name!,
+            style: const TextStyle(color: Colors.white),
           ),
           decoration: BoxDecoration(color: Colors.green),
         ),

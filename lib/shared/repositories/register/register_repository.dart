@@ -8,8 +8,10 @@ class RegisterRepository implements IRegisterRepository {
 
   @override
   Future<bool> registerUser(RegisterUserModel body) async {
-    return await _usersDataSource.registerUser(body).then((value) async {
-      await _usersDataSource.registerUserAuth(body.email!, body.password!);
+    return await _usersDataSource
+        .registerUserAuth(body.email!, body.password!)
+        .then((value) async {
+      await _usersDataSource.registerUser(body, value.user!.uid);
       return true;
     }).catchError((e) {
       print(e);

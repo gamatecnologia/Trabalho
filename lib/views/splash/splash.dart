@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:trabalho/views/login/login_provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,9 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushNamed(context, '/login');
-    });
+    Provider.of<LoginProvider>(context, listen: false).autoLogin(context);
   }
 
   @override

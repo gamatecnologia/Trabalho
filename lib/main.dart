@@ -7,7 +7,9 @@ import 'package:trabalho/views/chat/chat_screens.dart';
 import 'package:trabalho/views/home/home.dart';
 import 'package:trabalho/views/home/home_provider.dart';
 import 'package:trabalho/views/login/login.dart';
+import 'package:trabalho/views/login/login_provider.dart';
 import 'package:trabalho/views/profile/profile.dart';
+import 'package:trabalho/views/profile/profile_provider.dart';
 import 'package:trabalho/views/register/register.dart';
 import 'package:trabalho/views/register/register_provider.dart';
 import 'package:trabalho/views/splash/splash.dart';
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HomeProvider()),
         ChangeNotifierProvider(create: (_) => ChatProvider()),
         ChangeNotifierProvider(create: (_) => RegisterProvider()),
+        ChangeNotifierProvider(create: (_) => LoginProvider()),
+        ChangeNotifierProvider(create: (_) => ProfileProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

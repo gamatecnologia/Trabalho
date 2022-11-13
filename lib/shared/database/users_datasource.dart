@@ -11,7 +11,7 @@ class UsersDataSource {
     return await _firebaseFirestore
         .collection('users')
         .doc(uid)
-        .set({'name': body.name, 'email': body.email});
+        .set({'name': body.name, 'email': body.email, 'id': uid});
   }
 
   Future<UserCredential> registerUserAuth(String email, String password) async {

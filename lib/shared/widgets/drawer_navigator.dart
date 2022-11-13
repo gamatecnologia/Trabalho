@@ -17,9 +17,23 @@ class DrawerNavigator extends StatelessWidget {
       padding: EdgeInsets.zero,
       children: [
         DrawerHeader(
-          child: Text(
-            'Olá ' + _action.myProfile.name!,
-            style: const TextStyle(color: Colors.white),
+          child: Row(
+            children: [
+              const CircleAvatar(
+                child: Icon(
+                  Icons.person,
+                  size: 50,
+                ),
+                radius: 40,
+              ),
+              SizedBox(
+                width: size.width * 0.04,
+              ),
+              Text(
+                'Olá ' + _action.myProfile.name!,
+                style: const TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ],
           ),
           decoration: BoxDecoration(color: Colors.green),
         ),

@@ -2,8 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:trabalho/views/chat/chat_provider.dart';
-import 'package:trabalho/views/chat/chat_screens.dart';
+import 'package:trabalho/views/chat/details_provider.dart';
+import 'package:trabalho/views/chat/details_screens.dart';
 import 'package:trabalho/views/home/home.dart';
 import 'package:trabalho/views/home/home_provider.dart';
 import 'package:trabalho/views/login/login.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => HomeProvider()),
-        ChangeNotifierProvider(create: (_) => ChatProvider()),
+        ChangeNotifierProvider(create: (_) => DetailsProvider()),
         ChangeNotifierProvider(create: (_) => RegisterProvider()),
         ChangeNotifierProvider(create: (_) => LoginProvider()),
         ChangeNotifierProvider(create: (_) => ProfileProvider()),
@@ -59,8 +59,7 @@ class MyApp extends StatelessWidget {
           '/login': (context) => const LoginScreen(),
           '/register': (context) => const RegisterScreen(),
           '/home': (context) => const HomeScreen(),
-          '/perfil': (context) => const ProfileScreen(),
-          '/chat': (context) => const ChatScreen()
+          '/perfil': (context) => const ProfileScreen()
         },
       ),
     );
